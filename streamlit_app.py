@@ -20,7 +20,7 @@ def load_data(file):
     return data
 
 # Store uploaded file
-uploaded_file = st.file_uploader("Choose a file to begin")
+uploaded_file = st.file_uploader("Choose a file to begin",accept_multiple_files= False)
 
 # Check if file uploaded, prevent error message
 if uploaded_file is None:
@@ -56,7 +56,7 @@ with st.sidebar:
     )
 
 df_selection = df.query(
-    "Country == @country & Service == @service & Status == @status & Level == @level"
+    "Country == @country & Status == @status & Level == @level"
 )
 
 
