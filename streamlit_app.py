@@ -13,7 +13,8 @@ st.write(
     "An overview of the trips and visits for WY2024/25."
 )
 
-@st.cache_data # cache data
+@st.cache_resource # returns the cached object itself
+#@st.cache_data # creates new copy of data each time it is called
 
 # Load excel file
 # for fixed file use below
@@ -67,7 +68,7 @@ with st.sidebar:
     )
 
 df_selection = df.query(
-    "Country == @country & Status == @status & Level == @level"
+   "Country == @country & Status == @status & Level == @level"
 )
 
 # Preview data in expanded window
@@ -76,17 +77,18 @@ with st.expander("Data preview"):
     #st.dataframe(df_selection) # use when filter is on
     
     # Specify editable columns in df_selection
-    #editable_columns = ['Country', 'Service', 'Departure Date', 'Return Date', 'Status', 'Level', ]
+    #editable_columns = ['Service', 'Departure Date', 'Return Date', 'Status']
+     
     edited_df = st.data_editor(
         df_selection,
         use_container_width=True,
-        hide_index= False,
+        hide_index= True,
         num_rows= "dynamic",
         #disabled=~df_selection.columns.isin(editable_columns)
     )
     # Check if df is edited
     #if edited_df is not None:
-     #   st.write("Edited dataframe:")
+      #  st.write("Edited dataframe:")
       #  st.dataframe(edited_df)
     #st.dataframe(df_selection) # use when filter is on
 
@@ -94,6 +96,17 @@ with st.expander("Data preview"):
 total_trips = edited_df[edited_df['Trip or Visit'] == 'Trip (Outgoing)'].shape[0]
 total_visits = edited_df[edited_df['Trip or Visit'] == 'Visit (Incoming)'].shape[0]
 
+left_column, middle_column, right_column = st.columns(3)
+with left_column:
+    st.header(f"{total_trips}")
+    #st.markdown()
+    st.subheader("Total Trips")
+
+with middle_column:
+    st.header(f"{total_visits}")
+    st.subheader("Total Visits")
+
+st.markdown("###")
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
     st.header(f"{total_trips}")
