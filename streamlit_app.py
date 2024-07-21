@@ -83,7 +83,7 @@ with st.expander("Data preview"):
 total_trips = edited_df[edited_df['Trip or Visit'] == 'Trip (Outgoing)'].shape[0]
 total_visits = edited_df[edited_df['Trip or Visit'] == 'Visit (Incoming)'].shape[0]
 
-left_column, middle_column, right_column = st.column(3)
+left_column, middle_column, right_column = st.columns(3)
 with left_column:
     st.header({total_trips})
     st.subheader("Total Trips")
