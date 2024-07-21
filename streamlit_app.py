@@ -69,7 +69,7 @@ with st.sidebar:
 df_selection = df.query(
    "Country == @country & Status == @status & Level == @level"
 )
-
+df_selection = df_selection.dropna(inplace= True)
 # Preview data in expanded window
 with st.expander("Data preview"):
     #st.dataframe(df)
@@ -79,7 +79,7 @@ with st.expander("Data preview"):
     #editable_columns = ['Service', 'Departure Date', 'Return Date', 'Status']
      
     edited_df = st.data_editor(
-        df_selection.dropna(inplace=True),
+        df_selection,
         use_container_width=True,
         num_rows= "dynamic",
         #disabled=~df_selection.columns.isin(editable_columns)
