@@ -59,7 +59,6 @@ df_selection = df.query(
     "Country == @country & Status == @status & Level == @level"
 )
 
-
 # Preview data in expanded window
 with st.expander("Data preview"):
     #st.dataframe(df)
