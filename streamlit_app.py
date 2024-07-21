@@ -14,21 +14,25 @@ st.write(
 )
 
 @st.cache_data # cache data
+
+# Load excel file
+df = pd.read_excel("Trip and visit WY24_25 Database")
+
 # Upload file function
-def load_data(file):
-    data = pd.read_excel(file)
-    return data
+#def load_data(file):
+#    data = pd.read_excel(file)
+#    return data
 
 # Store uploaded file
-uploaded_file = st.file_uploader("Choose a file to begin",accept_multiple_files= False)
+#uploaded_file = st.file_uploader("Choose a file to begin",accept_multiple_files= False)
 
 # Check if file uploaded, prevent error message
-if uploaded_file is None:
-    st.info("Please upload a file", icon = "⚠️")
-    st.stop() # stop processes
+#if uploaded_file is None:
+#    st.info("Please upload a file", icon = "⚠️")
+#    st.stop() # stop processes
 
 # Assign uploaded file to dataframe
-df = load_data(uploaded_file)
+#df = load_data(uploaded_file)
 
 # Basic data cleaning
 df.dropna(inplace=True) # remove blanks
@@ -88,7 +92,8 @@ total_visits = edited_df[edited_df['Trip or Visit'] == 'Visit (Incoming)'].shape
 
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
-    st.header(f"{total_trips}")
+    #st.header(f"{total_trips}")
+    st.markdown()
     st.subheader("Total Trips")
 
 with middle_column:
