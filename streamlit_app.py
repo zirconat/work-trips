@@ -76,5 +76,5 @@ with st.expander("Data preview"):
     if edited_df is not None:
         st.write("Edited dataframe:")
         st.dataframe(edited_df)
-    st.dataframe(df_selection) # use when filter is on
+    #st.dataframe(df_selection) # use when filter is on
     
