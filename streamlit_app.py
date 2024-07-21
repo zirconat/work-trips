@@ -13,17 +13,21 @@ st.write(
     "An overview of the trips and visits for WY2024/25."
 )
 
-#@st.cache_data # cache data
+@st.cache_data # cache data
 
 # Load excel file
-df = pd.read_excel("Trip and visit WY24_25 Database.xlsx")
+# for fixed file use below
+def load_data(path:str):
+    data = pd.read_excel(path)
+    return data
+df = pd.read_excel("./Trip and visit WY24_25 Database.xlsx")
 
-# Upload file function
+# for file upload use below
 #def load_data(file):
 #    data = pd.read_excel(file)
 #    return data
 
-# Store uploaded file
+# Upload file function
 #uploaded_file = st.file_uploader("Choose a file to begin",accept_multiple_files= False)
 
 # Check if file uploaded, prevent error message
