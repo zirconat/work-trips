@@ -69,7 +69,6 @@ with st.sidebar:
 df_selection = df.query(
    "Country == @country & Status == @status & Level == @level"
 )
-df_selection = df_selection.dropna(inplace= True)
 # Preview data in expanded window
 with st.expander("Data preview"):
     #st.dataframe(df)
@@ -107,9 +106,22 @@ with middle_column:
 st.markdown("###")
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
-    st.header(f"{total_trips}")
-    #st.markdown()
-    st.subheader("Total Trips")
+    # Convert 'Departure date' column to datetime
+    df_selection['Date'] = pd.to_datetime(df_selection['Departure Date'])
+
+    # Extract month
+    df_selection['Month'] = df_selection['Date'].dt.month_name()
+
+    # Count occurrences of each month
+    df_grouped = df_selection['Month'].value_counts().reset_index(name= 'Count')
+    df_grouped.rename(columns={'index': 'Month'}, inplace= True)
+
+    # Create line chart
+    fig1 = px.line(df_grouped, x = 'Month', y = 'Count', title = 'Monthly Breakdown')
+
+    # Display chart
+    st.plotly_chart(fig1)
+
 
 with middle_column:
     st.header(f"{total_visits}")
