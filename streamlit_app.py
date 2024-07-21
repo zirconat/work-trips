@@ -35,22 +35,22 @@ df = load_data(uploaded_file)
 with st.sidebar:
     st.header("Filter:")
     country = st.sidebar.multiselect(
-        "Select the country:",
+        "Country:",
         options=df["Country"].unique(),
         default=df["Country"].unique()
     )
-    service = st.sidebar.multiselect(
-        "Select the service:",
+    """service = st.sidebar.multiselect(
+        "Service:",
         options=df["Service"].unique(),
         default=df["Service"].unique()
-    )
+    )"""
     status = st.sidebar.multiselect(
-        "Select the status:",
+        "Status:",
         options=df["Status"].unique(),
         default=df["Status"].unique()
     )
     level = st.sidebar.multiselect(
-        "Select the level:",
+        "Level:",
         options=df["Level"].unique(),
         default=df["Level"].unique()
     )
