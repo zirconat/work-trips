@@ -96,8 +96,8 @@ total_visits = edited_df[edited_df['Trip or Visit'] == 'Visit (Incoming)'].shape
 
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
-    #st.header(f"{total_trips}")
-    st.markdown()
+    st.header(f"{total_trips}")
+    #st.markdown()
     st.subheader("Total Trips")
 
 with middle_column:
