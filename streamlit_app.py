@@ -73,8 +73,12 @@ with st.expander("Data preview"):
         num_rows= "dynamic",
         #disabled=~df_selection.columns.isin(editable_columns)
     )
+    # Check if df is edited
     #if edited_df is not None:
      #   st.write("Edited dataframe:")
       #  st.dataframe(edited_df)
     #st.dataframe(df_selection) # use when filter is on
-    
+
+# Key Stats
+total_trips = edited_df[edited_df['Trip or Visit'] == 'Trip (Outgoing)'].shape[0]
+st.write(f" Total trips: {total_trips}")
