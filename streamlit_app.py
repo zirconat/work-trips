@@ -81,4 +81,13 @@ with st.expander("Data preview"):
 
 # Key Stats
 total_trips = edited_df[edited_df['Trip or Visit'] == 'Trip (Outgoing)'].shape[0]
-st.write(f" Total trips: {total_trips}")
+total_visits = edited_df[edited_df['Trip or Visit'] == 'Visit (Incoming)'].shape[0]
+
+left_column, middle_column, right_column = st.columnm(3)
+with left_column:
+    st.header({total_trips})
+    st.subheader("Total Trips")
+
+with middle_column:
+    st.header({total_visits})
+    st.subheader("Total Visits")
