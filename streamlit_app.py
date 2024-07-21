@@ -63,3 +63,18 @@ df_selection = df.query(
 with st.expander("Data preview"):
     #st.dataframe(df)
     st.dataframe(df_selection) # use when filter is on
+    
+    # Specify editable columns in df_selection
+    #editable_columns = ['Country', 'Service', 'Departure Date', 'Return Date', 'Status', 'Level', ]
+    edited_df = st.data_editor(
+        df_selection,
+        use_container_width=True,
+        hide_index= True,
+        num_rows= "dynamic",
+        #disabled=~df_selection.columns.isin(editable_columns)
+    )
+    if edited_df is not None:
+        st.write("Edited dataframe:")
+        st.dataframe(edited_df)
+
+    
