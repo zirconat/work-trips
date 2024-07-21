@@ -16,7 +16,7 @@ st.write(
 @st.cache_data # cache data
 
 # Load excel file
-df = pd.read_excel("Trip and visit WY24_25 Database")
+df = pd.read_excel("Trip and visit WY24_25 Database.xlsx")
 
 # Upload file function
 #def load_data(file):
