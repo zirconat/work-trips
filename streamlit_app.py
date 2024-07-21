@@ -13,8 +13,8 @@ st.write(
     "An overview of the trips and visits for WY2024/25."
 )
 
-@st.cache_resource # returns the cached object itself
-#@st.cache_data # creates new copy of data each time it is called
+# @st.cache_resource # returns the cached object itself
+@st.cache_data # creates new copy of data each time it is called
 
 # Load excel file
 # for fixed file use below
@@ -41,7 +41,6 @@ df = pd.read_excel("./Trip and visit WY24_25 Database.xlsx")
 
 # Basic data cleaning
 df.dropna(inplace=True) # remove blanks
-
 
 # Sidebar filter options
 with st.sidebar:
@@ -80,9 +79,8 @@ with st.expander("Data preview"):
     #editable_columns = ['Service', 'Departure Date', 'Return Date', 'Status']
      
     edited_df = st.data_editor(
-        df_selection,
+        df_selection.dropna(inplace=True),
         use_container_width=True,
-        hide_index= True,
         num_rows= "dynamic",
         #disabled=~df_selection.columns.isin(editable_columns)
     )
