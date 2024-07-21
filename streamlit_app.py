@@ -30,6 +30,9 @@ if uploaded_file is None:
 # Assign uploaded file to dataframe
 df = load_data(uploaded_file)
 
+# Basic data cleaning
+df.dropna(inplace=True) # remove blanks
+
 
 # Sidebar filter options
 with st.sidebar:
@@ -69,7 +72,7 @@ with st.expander("Data preview"):
     edited_df = st.data_editor(
         df_selection,
         use_container_width=True,
-        hide_index= True,
+        hide_index= False,
         num_rows= "dynamic",
         #disabled=~df_selection.columns.isin(editable_columns)
     )
