@@ -62,7 +62,7 @@ df_selection = df.query(
 # Preview data in expanded window
 with st.expander("Data preview"):
     #st.dataframe(df)
-    st.dataframe(df_selection) # use when filter is on
+    #st.dataframe(df_selection) # use when filter is on
     
     # Specify editable columns in df_selection
     #editable_columns = ['Country', 'Service', 'Departure Date', 'Return Date', 'Status', 'Level', ]
@@ -76,5 +76,5 @@ with st.expander("Data preview"):
     if edited_df is not None:
         st.write("Edited dataframe:")
         st.dataframe(edited_df)
-
+    st.dataframe(df_selection) # use when filter is on
     
