@@ -14,6 +14,7 @@ st.write(
 )
 
 # Upload file function
+@st.cache_data
 def load_data(file):
     data = pd.read_excel(file)
     return data
