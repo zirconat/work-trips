@@ -13,7 +13,7 @@ st.write(
     "An overview of the trips and visits for WY2024/25."
 )
 
-@st.cache_data # cache data
+#@st.cache_data # cache data
 
 # Load excel file
 df = pd.read_excel("Trip and visit WY24_25 Database.xlsx")
