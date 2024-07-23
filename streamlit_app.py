@@ -104,7 +104,7 @@ with middle_column:
     st.subheader("Total Visits")
 
 st.markdown("###")
-left_column, middle_column, right_column = st.columns(3)
+left_column, middle_column = st.columns(2)
 with left_column:
     # Convert 'Departure date' column to datetime
     df_selection['Date'] = pd.to_datetime(df_selection['Departure Date'])
