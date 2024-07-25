@@ -62,12 +62,12 @@ with st.sidebar:
     )
     level = st.sidebar.multiselect(
         "Level:",
-        options=df["Level"].unique(),
-        default=df["Level"].unique()
+        options=df["Del Lead"].unique(),
+        default=df["Del Lead"].unique()
     )
 
 df_selection = df.query(
-   "Country == @country & Status == @status & Level == @level"
+   "Country == @country & Status == @status & Del Lead == @level"
 )
 # Preview data in expanded window
 with st.expander("Data preview"):
